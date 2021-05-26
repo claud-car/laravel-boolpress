@@ -14,10 +14,11 @@
                         </div>
                     @endif
 
-                    {{ __('You are logged in!') }}
+                    {{ __('Benvenuto,naviga qui sotto per gestire o creare i tuoi posts.') }}
                 </div>
             </div>
         </div>
     </div>
+    <a href="{{route('admin.posts.index')}}">-Vai ai posts</a>
 </div>
 @endsection

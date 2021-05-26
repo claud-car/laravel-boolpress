@@ -64,7 +64,7 @@ class PostController extends Controller
      */
     public function show(Post $post)
     {
-        //
+        return view('admin.posts.show', compact('post'));
     }
 
     /**
@@ -92,10 +92,11 @@ class PostController extends Controller
             'content' => 'required|string'
         ]);
 
-
         $data = $request->all();
 
-        $data['slug'] = $this->generateSlug($data['title']); 
+        
+
+        $data['slug'] = $this->generateSlug($data['title'], $post->title != $data['title']); 
         $post->update($data);
 
         return redirect()->route('admin.posts.index');
@@ -110,12 +111,19 @@ class PostController extends Controller
      */
     public function destroy(Post $post)
     {
-        //
+        $post->delete();
+
+        return redirect()->route('admin.posts.index');
     }
 
-    private function generateSlug(string $title)
+    private function generateSlug(string $title, bool $change = true)
     {
         $slug = Str::slug($title, '-');
+
+        if(!$change){
+            return $slug;
+        }
+
         $slug_base = $slug;
         $contatore = 1;
 
