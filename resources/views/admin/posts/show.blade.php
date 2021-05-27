@@ -3,7 +3,11 @@
 @section('content')
     <div class="container">
         <div class="col-md-12 card-header row justify-content-center">     
-            <h5 class=text-align-center>Categoria: {{$post->category->name}}</h5>
+            @if($post->category)
+                <h5 class=text-align-center>Categoria:
+                    {{$post->category->name}}
+                </h5>
+            @endif
         </div>
         <div class="col-md-12 card-header row justify-content-center">     
             <h2 class=text-align-center>{{$post->title}}</h2>
