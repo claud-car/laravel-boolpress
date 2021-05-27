@@ -12,4 +12,10 @@ class PostController extends Controller
 
         return view('guests.posts.show', compact('post'));
     }
+
+    public function index(){
+        $posts = Post::all();
+
+        return view('guests.posts.index', compact('posts'));
+    }
 }

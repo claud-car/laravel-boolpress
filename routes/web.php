@@ -14,7 +14,9 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', 'HomeController@index')->name('index');
+ROUTE::get('posts', 'PostController@index')->name('posts.index');
 ROUTE::get('posts/{slug}', 'PostController@show')->name('posts.show');
+ROUTE::get('categories/{slug}', 'CategoryController@index')->name('category.index');
 
 
 Auth::routes();
