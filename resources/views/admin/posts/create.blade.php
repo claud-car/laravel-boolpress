@@ -9,7 +9,7 @@
         </div>
         <div class="row justify-content-center">
             <div class="col-md-8">
-                <form action="{{route('admin.posts.store')}}" method= "post">
+                <form action="{{route('admin.posts.store')}}" method= "post" enctype="multipart/form-data">
                     @csrf 
                     @method('POST')
 
@@ -21,7 +21,7 @@
                                 <option value="{{$category->id}}">{{$category->name}}</option>
                             @endforeach
                         </select>
-                        @error ('title')
+                        @error ('category_id')
                             <small class=" text-danger"> {{ $message }} </small>
                         @enderror
                     </div>
@@ -40,7 +40,13 @@
                         @error ('content')
                             <small class=" text-danger"> {{ $message }} </small>
                         @enderror
-
+                    </div>
+                    <div class="form-group">
+                        <label for="Cover">Cover</label>
+                        <input class="form-control-file @error('cover') is-invalid @enderror" id="cover" type="file" name="cover">
+                        @error ('cover')
+                            <small class=" text-danger"> {{ $message }} </small>
+                        @enderror
                     </div>
                     <button class="btn btn-primary" type="submit">Salva</button>
 

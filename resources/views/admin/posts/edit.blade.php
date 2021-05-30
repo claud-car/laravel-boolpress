@@ -4,12 +4,12 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">       
-                <h3>Nuovo post</h3>
+                <h3>Modifica Post</h3>
             </div>
         </div>
         <div class="row justify-content-center">
             <div class="col-md-8">
-                <form action="{{route('admin.posts.update', ['post' => $post->id])}}" method= "post">
+                <form action="{{route('admin.posts.update', ['post' => $post->id])}}" method= "post" enctype="multipart/form-data">
                     @csrf 
                     @method('PATCH')
 
@@ -39,8 +39,19 @@
                         @error ('content')
                             <small class=" text-danger"> {{ $message }} </small>
                         @enderror
-
                     </div>
+
+                    <div>
+                        <img src="{{asset($post->cover)}}" alt="">
+                    </div>
+                    <div class="form-group">
+                        <label for="Cover">Cover</label>
+                        <input class="form-control-file @error('cover') is-invalid @enderror" id="cover" type="file" name="cover">
+                        @error ('cover')
+                            <small class=" text-danger"> {{ $message }} </small>
+                        @enderror
+                    </div>
+
                     <button class="btn btn-primary" type="submit">Salva</button>
 
                 </form>

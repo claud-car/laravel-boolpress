@@ -15,6 +15,10 @@
         <div class="col-md-12 card-body row justify-content-center">
             <h3 class=text-align-center>{{$post->content}}</h3>
         </div>
+        <div class="col-md-12 card-header row justify-content-center"> 
+            <img src="{{asset($post->cover)}}" alt="{{$post->title}}">    
+        </div>
+
         <a href="{{route('admin.posts.index')}}">-Indietro</a>
     </div>
 
