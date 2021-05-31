@@ -6,9 +6,11 @@ use App\Post;
 use App\Category;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Mail\SendNewMail;
 
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Mail;
 
 class PostController extends Controller
 {
@@ -48,7 +50,7 @@ class PostController extends Controller
             'category_id' => 'exists:categories,id|nullable',
             'title' => 'required|string|max:255',
             'content' => 'required|string',
-            'cover' => 'image|max:6000|nullable'
+            'cover' => 'required|mimes:jpeg,jpg,png|max:1000'
         ]);
         $data = $request->all();
 
@@ -65,6 +67,7 @@ class PostController extends Controller
         $post->slug = $this->generateSlug($post->title);
         $post->cover = 'storage/'.$cover;
         $post->save();
+        Mail::to('mail@mail.it')->send(new SendNewMail());
 
         return redirect()->route('admin.posts.index');
     }
@@ -105,7 +108,7 @@ class PostController extends Controller
             'category_id' => 'exists:categories,id|nullable',
             'title' => 'required|string|max:255',
             'content' => 'required|string',
-            'cover' => 'image|max:6000|nullable'
+            'cover' => 'required|mimes:jpeg,jpg,png|max:1000'
         ]);
 
         $data = $request->all();

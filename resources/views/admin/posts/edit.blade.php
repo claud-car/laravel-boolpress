@@ -45,7 +45,6 @@
                         <img src="{{asset($post->cover)}}" alt="">
                     </div>
                     <div class="form-group">
-                        <label for="Cover">Cover</label>
                         <input class="form-control-file @error('cover') is-invalid @enderror" id="cover" type="file" name="cover">
                         @error ('cover')
                             <small class=" text-danger"> {{ $message }} </small>
