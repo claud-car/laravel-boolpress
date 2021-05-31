@@ -78,11 +78,61 @@
                     @endauth
                 </div>
             @endif
+            
 
             <div class="content">
+    
+
                 <div class="title m-b-md">
                     Boolpress
                 </div>
+
+                <div class="row justify-content-center">
+            <div class="col-md-8">
+
+                <form action="{{route('contact')}}" action="" method="POST">
+                    @csrf
+                    @method('POST')
+        
+                    <div class="form-group">
+                        <label for="name">Nome e Cognome</label>
+                        <input class="form-control @error('name') is-invalid @enderror" id="name" name="name">
+                        @error ('name')
+                            <small class=" text-danger"> {{ $message }} </small>
+                        @enderror
+                    </div>
+
+                    <div class="form-group">
+                        <label for="name">Email</label>
+                        <input class="form-control @error('email') is-invalid @enderror" id="email" name="email">
+                        @error ('email')
+                            <small class=" text-danger"> {{ $message }} </small>
+                        @enderror
+                    </div>
+        
+                    <div class="form-group">
+                        <label for="name">Oggetto</label>
+                        <input class="form-control @error('oggetto') is-invalid @enderror" id="oggetto" name="oggetto">
+                        @error ('oggetto')
+                           <small class=" text-danger"> {{ $message }} </small>
+                        @enderror
+                    </div>
+        
+                    <div class="form-group">
+                        <label for="name">Content</label>
+                                <textarea class="form-control @error('content') is-invalid @enderror" id="content" name="content"></textarea>
+                        @error ('content')
+                            <small class=" text-danger"> {{ $message }} </small>
+                        @enderror
+                    </div>
+
+                    <button class="btn btn-primary" type="submit">Invia</button>
+        
+                </form>
+            </div>
+        </div>
+
+
 
                 <div class="links">
                     <a href="https://laravel.com/docs">Docs</a>
