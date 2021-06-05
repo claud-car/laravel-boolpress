@@ -8,7 +8,6 @@
                 @if($post->category)
             <h5 class=text-align-center>Categoria:
                     <a href="{{route ('category.index', ['slug' => $post->category->slug])}}">{{$post->category->name}}</a>
-
             </h5>
                 @endif
         </div>
@@ -17,6 +16,11 @@
         </div>
         <div class="col-md-12 card-body row justify-content-center">
             <h3 class=text-align-center>{{$post->content}}</h3>
+        </div>
+        <div>
+            @foreach($post->tags as $tag)
+                <a href="{{route ('tag.index', ['slug' => $tag->slug])}}">#{{$tag->name}}</a>
+            @endforeach
         </div>
         <a href="{{route('admin.posts.index')}}">-Indietro</a>
     </div>

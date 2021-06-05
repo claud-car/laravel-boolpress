@@ -48,6 +48,20 @@
                             <small class=" text-danger"> {{ $message }} </small>
                         @enderror
                     </div>
+
+                    <div class="form-group">
+                        <label for="tag">Tags</label>
+                        <select class="form-control @error('tag_ids') is-invalid @enderror" id="tag" name="tag_ids[]" multiple>
+                            @foreach($tags as $tag)
+                                <option value="{{$tag->id}}">{{$tag->name}}</option>
+                            @endforeach
+                        </select>
+                        @error ('tag_ids')
+                            <small class=" text-danger"> {{ $message }} </small>
+                        @enderror
+                    </div>
+
+
                     <button class="btn btn-primary" type="submit">Salva</button>
 
                 </form>
