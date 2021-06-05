@@ -111,8 +111,8 @@
                     </div>
         
                     <div class="form-group">
-                        <label for="name">Oggetto</label>
-                        <input class="form-control @error('oggetto') is-invalid @enderror" id="oggetto" name="oggetto">
+                        <label for="subject">Subject</label>
+                        <input class="form-control @error('subject') is-invalid @enderror" id="subject" name="subject">
                         @error ('oggetto')
                            <small class=" text-danger"> {{ $message }} </small>
                         @enderror

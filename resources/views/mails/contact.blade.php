@@ -1,1 +1,2 @@
-<p>Questa è una mail di contatto</p>
+<p>Questa è una mail di {{$name}} in cui chiede:</p>
+<p>{{$content}}</p>
